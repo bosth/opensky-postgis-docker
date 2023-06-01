@@ -5,11 +5,11 @@ RUN apt install -y postgresql-server-dev-15 postgresql-plpython3-15
 RUN apt install -y build-essential libreadline-dev zlib1g-dev flex bison libxml2-dev libxslt-dev libssl-dev libxml2-utils xsltproc
 RUN apt install -y python3 python3-dev python3-setuptools python3-pip python3-geopy python3-requests python3-dateutil
 RUN apt install -y postgis
-RUN apt install -y wget
+RUN apt install -y wget git unzip
 
 # install Python packages
 RUN pip3 install plpygis
-EXPOSE 5432
+RUN pip3 install requests --upgrade
 
 # install multicorn2
 #RUN wget https://github.com/pgsql-io/multicorn2/archive/refs/tags/v2.4.tar.gz
@@ -23,4 +23,8 @@ RUN make
 RUN make install
 RUN python3 setup.py install
 
+RUN pip3 install git+https://github.com/bosth/geofdw
+
 ADD initdb.d/ /docker-entrypoint-initdb.d
+WORKDIR /
+EXPOSE 5432

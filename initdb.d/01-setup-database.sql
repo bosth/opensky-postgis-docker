@@ -1,0 +1,3 @@
+CREATE EXTENSION multicorn;
+CREATE EXTENSION plpython3u;
+CREATE EXTENSION postgis;

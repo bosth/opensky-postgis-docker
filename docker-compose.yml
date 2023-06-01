@@ -4,6 +4,9 @@ services:
     image: postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: opensky
+      OPENSKY_USER: ${OPENSKY_USER}
+      OPENSKY_PASS: ${OPENSKY_PASS}
     ports:
-      - 5432:5432
+      - 54321:5432
 

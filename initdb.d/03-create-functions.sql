@@ -1,37 +1,3 @@
-CREATE EXTENSION multicorn;
-CREATE EXTENSION plpython3u;
-CREATE EXTENSION postgis;
-
-CREATE SERVER states foreign data wrapper multicorn OPTIONS ( WRAPPER  'geofdw.StateVector' );
-CREATE FOREIGN TABLE states (
-  icao24 TEXT,
-  category INT,
-  callsign TEXT,
-  time TIMESTAMP,
-  geom GEOMETRY,
-  squawk TEXT,
-  true_track FLOAT,
-  velocity FLOAT,
-  spi BOOLEAN,
-  category_text TEXT,
-  position_source INTEGER) SERVER states;
-
-
-CREATE TABLE flight (
-  icao24   TEXT,
-  callsign TEXT,
-  airport_depart TEXT, -- departure airport
-  airport_arrive TEXT, -- arrival airport
-  time_depart TIMESTAMP, -- departure time
-  time_arrive TIMESTAMP, -- arrival time
-  geom GEOMETRY(LINESTRINGZM, 4326)
-);
-
-CREATE INDEX ON
-  flight
-USING
-  gist (geom gist_geometry_ops_nd);
-
 CREATE OR REPLACE FUNCTION
     get_aircraft_flights(icao24 TEXT, in_datebegin DATE, in_dateend DATE)
 RETURNS
@@ -203,5 +169,3 @@ AS $$
                 vertices.append(pt)
     return LineString(vertices, srid=4326)
 $$ LANGUAGE plpython3u;
-
-
