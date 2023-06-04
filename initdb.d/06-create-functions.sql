@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION
-    get_aircraft_flights(icao24 TEXT, in_datebegin DATE, in_dateend DATE)
+    opensky_get_aircraft_flights(icao24 TEXT, in_datebegin DATE, in_dateend DATE)
 RETURNS
     TABLE (LIKE flight)
 AS $$
@@ -46,7 +46,7 @@ $$ LANGUAGE plpython3u;
 
 
 CREATE OR REPLACE FUNCTION
-    get_track(icao24 TEXT, in_date TIMESTAMP WITH TIME ZONE)
+    opensky_get_track(icao24 TEXT, in_date TIMESTAMP WITH TIME ZONE)
 RETURNS
     GEOMETRY(LINESTRINGZM, 4326)
 AS $$
@@ -84,7 +84,7 @@ $$ LANGUAGE plpython3u;
 
 
 CREATE OR REPLACE FUNCTION
-    get_airport_flights(airport TEXT, in_datebegin DATE, in_dateend DATE)
+    opensky_get_airport_flights(airport TEXT, in_datebegin DATE, in_dateend DATE)
 RETURNS
     TABLE (LIKE flight)
 AS $$
