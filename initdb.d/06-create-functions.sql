@@ -91,7 +91,7 @@ AS $$
     import os
     OSUSER = os.getenv("OPENSKY_USER")
     OSPASS = os.getenv("OPENSKY_PASS")
-    OSURL = "Thttps://opensky-network.org/api"
+    OSURL = "https://opensky-network.org/api"
 
     from datetime import datetime
     from dateutil import parser
