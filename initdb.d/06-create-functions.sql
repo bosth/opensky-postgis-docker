@@ -132,7 +132,7 @@ $$ LANGUAGE plpython3u;
 
 
 CREATE OR REPLACE FUNCTION
-    interpolate_track_evelation(geom_in GEOMETRY(LINESTRINGZM))
+    interpolate_track_elevation(geom_in GEOMETRY(LINESTRINGZM))
 RETURNS
     GEOMETRY(LINESTRINGZM)
 AS $$
@@ -148,7 +148,7 @@ AS $$
     for i, _ in enumerate(elevations):
         if i == len(elevations) - 1:
             for v in elevations[i]:
-                vertices.append([v.x, v.z, v.y, v.m])
+                vertices.append([v.x, v.y, v.z, v.m])
         else:
             elev_st = elevations[i][0].z
             elev_ed = elevations[i+1][0].z
