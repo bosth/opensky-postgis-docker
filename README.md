@@ -1,6 +1,14 @@
 # foss4g-2023-docker
 Dockerfile for FOSS4G 2023 Talk
 
+Create a `.evn` file that exports your OpenSky Network credentials:
+
+```
+export OPENSKY_USER="user name"
+export OPENSKY_PASS="password"
+```
+Then start the container:
+
 `docker compose up --build`
 
 Then connect to Postgres runnign on port 54321:
