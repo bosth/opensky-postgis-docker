@@ -1,5 +1,5 @@
-# foss4g-2023-docker
-Dockerfile for FOSS4G 2023 Talk
+# opensky-postgis-docker
+Dockerfile for Aircraft trajectories in PostGIS talk
 
 Create a `.evn` file that exports your OpenSky Network credentials:
 
